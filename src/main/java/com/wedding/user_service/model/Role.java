@@ -5,21 +5,17 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
-
+@Entity
 @Getter
 @Setter
-@Entity
-public class User {
+@Table(name = "role")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String username;
-    private String password;
-
-    @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-    private Set<ERole> roles;
+    @Column(length = 20)
+    private ERole name;
 
-    // Getters and setters
 }
