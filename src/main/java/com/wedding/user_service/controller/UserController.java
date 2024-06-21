@@ -20,6 +20,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerUser(@RequestBody User user) {
+        user.setUsername(user.getUsername());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return "User registered successfully";
